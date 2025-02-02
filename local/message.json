@@ -1,0 +1,10 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/accounts"
+  },
+  "response": {
+    "status": 200,
+    "body": "[{\"resourceId\":\"25cac914-d8ae-6789-b215-650a6215820d\",\"type\":\"ACCOUNT\",\"status\":\"AVAILABLE\"}]"
+  }
+}

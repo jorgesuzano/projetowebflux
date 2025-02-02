@@ -1,7 +1,7 @@
 package com.br.estudo.webflux.controller;
 
 import com.br.estudo.webflux.controller.dto.ProductResourceDTO;
-import lombok.extern.slf4j.Slf4j;
+import com.br.estudo.webflux.process.ProcessService;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,15 +9,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
-@Slf4j
+import java.util.Arrays;
+
 @RestController
 @RequestMapping("/v3")
 public class ControllerRequest {
 
-    @GetMapping("/resources")
-    public Mono<ProductResourceDTO> getAllProducts(){
+    final ProcessService processService;
 
-        return null;
+    public ControllerRequest(ProcessService processService) {
+        this.processService = processService;
+    }
+
+
+    @GetMapping("/resources")
+    public Mono<ProductResourceDTO> getAllProducts(@RequestParam String scopes){
+
+        var lista = Arrays.asList(scopes.split(" "));
+//        var result = processService.getAllProducts(lista);
+        return processService.getAllProducts(lista);
     }
 
 }
